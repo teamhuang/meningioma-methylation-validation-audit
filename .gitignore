@@ -1,0 +1,33 @@
+# Secrets / credentials
+.env
+.env.*
+*.pem
+*.key
+credentials.json
+secrets.json
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# R
+.Rhistory
+.RData
+
+# Raw data and derived outputs are intentionally NOT tracked (this is a code-only repo)
+data/
+*.idat
+*.tar
+*.npy
+*.npz
+*.csv.gz
+*.h5
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -1,0 +1,33 @@
+args<-commandArgs(trailingOnly=TRUE)
+Sys.setlocale("LC_CTYPE",".UTF-8")
+root<-args[1];cohort<-args[2]
+partition<-as.integer(args[3]);partitions<-as.integer(args[4])
+.libPaths(c(file.path(root,"R_library"),.libPaths()))
+suppressPackageStartupMessages(library(minfi))
+stopifnot(as.character(packageVersion("minfi"))=="1.43.1")
+d<-read.csv(file.path(root,"results",paste0("requested_raw_",cohort,".csv")),check.names=FALSE)
+d<-d[((seq_len(nrow(d))-1L)%%partitions)+1L==partition,,drop=FALSE]
+out<-file.path(root,"results/raw_qc");dir.create(out,recursive=TRUE,showWarnings=FALSE)
+for(start in seq(1L,nrow(d),by=8L)){
+  chunk<-d[start:min(start+7L,nrow(d)),,drop=FALSE]
+  ready<-vapply(chunk$barcode,function(b)all(file.exists(paste0(file.path(root,"raw_idat",cohort,b),c("_Grn.idat","_Red.idat")))),logical(1))
+  cached<-vapply(chunk$GSM,function(g)file.exists(file.path(out,paste0(g,"_qc.csv"))),logical(1))
+  chunk<-chunk[ready&!cached,,drop=FALSE];if(!nrow(chunk))next
+  cat("QC",cohort,partition,start,"n",nrow(chunk),"\n");flush.console()
+  rg<-read.metharray(file.path(root,"raw_idat",cohort,chunk$barcode),force=TRUE)
+  stopifnot(identical(as.character(basename(sampleNames(rg))),as.character(chunk$barcode)))
+  dp<-detectionP(rg)
+  ms<-preprocessRaw(rg);meth<-getMeth(ms);unmeth<-getUnmeth(ms)
+  for(i in seq_len(nrow(chunk))){
+    missing<-sum(!is.finite(meth[,i]))
+    result<-data.frame(cohort=cohort,GSM=chunk$GSM[i],barcode=chunk$barcode[i],array_type=annotation(rg)[[1]],
+      detection_test_probes=nrow(dp),detection_P_gt_001=sum(dp[,i]>.01,na.rm=TRUE),detection_P_missing=sum(!is.finite(dp[,i])),
+      detection_fail_fraction=mean(dp[,i]>.01,na.rm=TRUE),raw_median_M=median(meth[,i],na.rm=TRUE),raw_median_U=median(unmeth[,i],na.rm=TRUE),
+      nonfinite_meth=missing,author_failed_color_rule=missing>=nrow(meth)/2,
+      use="descriptive_QC_no_posthoc_outcome_based_exclusion")
+    target<-file.path(out,paste0(chunk$GSM[i],"_qc.csv"));temp<-paste0(target,".part")
+    write.csv(result,temp,row.names=FALSE);stopifnot(file.rename(temp,target))
+  }
+  rm(rg,dp,ms,meth,unmeth);gc()
+}
+capture.output(sessionInfo(),file=file.path(root,"results",paste0("raw_qc_session_",cohort,"_part",partition,"of",partitions,".txt")))

@@ -1,0 +1,7 @@
+args<-commandArgs(trailingOnly=TRUE)
+print(Sys.setlocale("LC_CTYPE",".UTF-8"))
+print(args);print(getwd());print(file.exists(file.path(args[1],"R_library")))
+print(normalizePath(file.path(args[1],"R_library"),mustWork=FALSE))
+.libPaths(c(file.path(args[1],"R_library"),.libPaths()));print(.libPaths())
+print(find.package("minfi",lib.loc=file.path(args[1],"R_library"),quiet=TRUE))
+print(installed.packages(lib.loc=file.path(args[1],"R_library"))[,c("Package","Version"),drop=FALSE])

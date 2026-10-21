@@ -1,0 +1,5 @@
+cat(R.version.string,"\n")
+cat(.libPaths(),sep="\n")
+p<-installed.packages()
+want<-c("minfi","illuminaio","IlluminaHumanMethylationEPICmanifest","IlluminaHumanMethylationEPICv2manifest","caret","BiocManager","sesame","methylumi")
+print(p[intersect(rownames(p),want),c("Package","Version"),drop=FALSE])

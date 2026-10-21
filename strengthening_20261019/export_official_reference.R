@@ -1,0 +1,10 @@
+args <- commandArgs(trailingOnly=TRUE)
+root <- args[1]
+x <- readRDS(file.path(root,"knn_reference_fc2.rds"))
+cat("Reference dimensions",dim(x),"\n")
+cat("Class",class(x),"\n")
+cat("Group table\n");print(table(x$group));cat("Group levels\n");print(levels(x$group))
+cat("Row names\n");print(head(rownames(x),10));cat("Column names\n");print(head(colnames(x)));print(tail(colnames(x)))
+write.csv(data.frame(sample=rownames(x),x,check.names=FALSE),file.path(root,"official_knn_training.csv"),row.names=FALSE)
+writeLines(colnames(x)[colnames(x)!="group"],file.path(root,"official_knn_cpgs.txt"))
+capture.output(sessionInfo(),file=file.path(root,"R_sessionInfo.txt"))

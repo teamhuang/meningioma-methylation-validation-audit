@@ -1,0 +1,5 @@
+cat(R.version.string, "\n")
+cat(.libPaths(),sep="\n")
+p <- installed.packages()
+cat("\nSelected installed packages\n")
+print(p[intersect(rownames(p),c("caret","class","minfi","optparse","data.table")),c("Package","Version"),drop=FALSE])

@@ -1,0 +1,6 @@
+Sys.setlocale("LC_CTYPE",".UTF-8")
+suppressPackageStartupMessages(library(illuminaio))
+print(args(readIDAT))
+x<-readIDAT("identity_preprocessing_20261019/raw_idat/author186/205735140150_R04C01_Grn.idat")
+print(names(x))
+for(n in intersect(names(x),c("Barcode","ChipType","Section","nSNPsRead","nSNPs")))print(list(field=n,value=x[[n]]))
