@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below. The manuscript DOI and a versioned Zenodo archive DOI will be added on acceptance."
+title: "Identity, training independence and selective prediction shape the transportability of a meningioma DNA methylation classifier (analysis code)"
+type: software
+authors:
+  - family-names: "Huang"
+    given-names: "Jianhuang"
+    email: "teamhuang@sina.com"
+    affiliation: "Department of Neurosurgery, Affiliated Hospital of Putian University, Putian, Fujian, China"
+  - family-names: "Lin"
+    given-names: "Yangyang"
+    affiliation: "Department of Neurosurgery, Chinese People's Armed Police Force Fujian Provincial Corps Hospital, Fuzhou, Fujian, China"
+  - family-names: "Wang"
+    given-names: "Qixiu"
+    affiliation: "Department of Cerebral Diseases Rehabilitation III, Affiliated Hospital of Liaoning University of Traditional Chinese Medicine, Shenyang, Liaoning, China"
+  - family-names: "Chen"
+    given-names: "Jianning"
+    email: "cjn2006@sohu.com"
+    affiliation: "Department of Neurosurgery, Affiliated Hospital of Putian University, Putian, Fujian, China"
+repository-code: "https://github.com/teamhuang/meningioma-methylation-validation-audit"
+url: "https://github.com/teamhuang/meningioma-methylation-validation-audit"
+keywords:
+  - meningioma
+  - DNA methylation classifier
+  - external validation
+  - transportability
+  - reproducibility audit
+  - selective prediction

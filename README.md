@@ -1,4 +1,4 @@
-# Validation integrity and transportability of DNA methylation classifiers in meningioma
+# Identity, training independence and selective prediction shape the transportability of a meningioma DNA methylation classifier
 
 Analysis **code** for a deployment-oriented audit of a frozen 403-CpG meningioma
 methylation classifier across four external cohorts (Baylor, Tübingen, UCSF, Hong Kong).
@@ -9,6 +9,18 @@ donor-structure checks been skipped.
 
 This repository is **code only**. It contains no raw data, no derived result tables and no
 figures, so it stays small and free of any patient-level content.
+
+## Authors
+
+Jianhuang Huang¹ # \*, Yangyang Lin² #, Qixiu Wang³ #, Jianning Chen¹ \*
+
+¹ Department of Neurosurgery, Affiliated Hospital of Putian University, Putian, Fujian, China
+² Department of Neurosurgery, Chinese People's Armed Police Force Fujian Provincial Corps Hospital, Fuzhou, Fujian, China
+³ Department of Cerebral Diseases Rehabilitation III, Affiliated Hospital of Liaoning University of Traditional Chinese Medicine, Shenyang, Liaoning, China
+
+\# Co-first authors (Jianhuang Huang, Yangyang Lin, Qixiu Wang contributed equally).
+\* Corresponding authors: Jianhuang Huang (teamhuang@sina.com); Jianning Chen (cjn2006@sohu.com).
+Correspondence address: Department of Neurosurgery, Affiliated Hospital of Putian University, No. 399 Xihai Road, Licheng District, Putian, Fujian 351100, China.
 
 ## Repository layout
 
@@ -63,9 +75,15 @@ validation of a frozen risk model for absolute risk.
 
 ## Citation
 
-If you use this code, please cite the associated manuscript
-(authors; *npj Digital Medicine*). Manuscript DOI and a versioned Zenodo archive DOI will be
-added on acceptance. [AUTHOR-SPECIFIC: fill citation and DOI before release.]
+If you use this code, please cite:
+
+> Huang J, Lin Y, Wang Q, Chen J. *Identity, training independence and selective
+> prediction shape the transportability of a meningioma DNA methylation classifier.*
+> npj Digital Medicine. [AUTHOR-SPECIFIC: add manuscript DOI / Zenodo archive DOI on
+> acceptance.]
+
+A machine-readable `CITATION.cff` is included. The versioned Zenodo DOI is not yet minted
+and is intentionally left as a placeholder rather than invented.
 
 ## License
 
