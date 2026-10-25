@@ -1,4 +1,4 @@
-# Identity, training independence and selective prediction shape the transportability of a meningioma DNA methylation classifier
+# Auditing the transportability of a meningioma DNA methylation classifier across independent cohorts
 
 Analysis **code** for a deployment-oriented audit of a frozen 403-CpG meningioma
 methylation classifier across four external cohorts (Baylor, Tübingen, UCSF, Hong Kong).

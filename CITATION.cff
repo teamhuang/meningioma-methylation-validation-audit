@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below. The manuscript DOI and a versioned Zenodo archive DOI will be added on acceptance."
-title: "Identity, training independence and selective prediction shape the transportability of a meningioma DNA methylation classifier (analysis code)"
+title: "Auditing the transportability of a meningioma DNA methylation classifier across independent cohorts (analysis code)"
 type: software
 authors:
   - family-names: "Huang"
